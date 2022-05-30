@@ -127,9 +127,36 @@ namespace cg
 	};
 
 
-	// TODO: Lab 1.03. Implement `cg::vertex` struct
 	struct vertex
 	{
+		// Coords
+		float x;
+		float y;
+		float z;
+
+		// Normal
+		float nx;
+		float ny;
+		float nz;
+
+		// Texture coords
+		float u;
+		float v;
+
+		// Colors
+		// Additional color
+		float ambient_r;
+		float ambient_g;
+		float ambient_b;
+		// Reflected color
+		float diffuse_r;
+		float diffuse_g;
+		float diffuse_b;
+		// Light colors (only for light sources)
+		float emissive_r;
+		float emissive_g;
+		float emissive_b;
+
 	};
 
 }// namespace cg
