@@ -37,6 +37,7 @@ void cg::renderer::rasterization_renderer::init()
 	rasterizer->set_render_target(render_target,
 								  depth_buffer);
 }
+
 void cg::renderer::rasterization_renderer::render()
 {
 	rasterizer->clear_render_target({111, 15, 112});
@@ -51,10 +52,11 @@ void cg::renderer::rasterization_renderer::render()
 	};
 
 	rasterizer->pixel_shader = [](cg::vertex vertex_data, float z) {
-		return cg::color{
-				vertex_data.ambient_r,
-				vertex_data.ambient_g,
-				vertex_data.ambient_b,
+		float d = 99998 - z * 100000;
+	  	return cg::color{
+			vertex_data.ambient_r + d,
+			vertex_data.ambient_g + d,
+			vertex_data.ambient_b + d,
 		};
 	};
 
