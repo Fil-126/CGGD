@@ -100,9 +100,9 @@ void cg::renderer::ray_tracing_renderer::render()
 
 	shadow_raytracer->any_hit_shader = [](const ray& ray, payload& payload,
 			const triangle<cg::vertex>& triangle)
-					{
+	{
 		return payload;
-					};
+	};
 
 	raytracer->build_acceleration_structure();
 	shadow_raytracer->acceleration_structures = raytracer->acceleration_structures;
