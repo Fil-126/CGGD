@@ -217,8 +217,8 @@ namespace cg::renderer
 
 					payload payload = trace_ray(ray, depth);
 
-					auto& history_pixel = histori->item(x, y);
-					history_pixel += sqrt(float3{
+					auto& history_pixel = history->item(x, y);
+					history_pixel += (float3{
 							payload.color.r,
 							payload.color.g,
 							payload.color.b
