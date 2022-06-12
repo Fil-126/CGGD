@@ -166,6 +166,8 @@ namespace cg::renderer
 			auto& vertex_buffer = vertex_buffers[shape_id];
 			size_t index_id = 0;
 
+			aabb<VB> aabb;
+
 			while (index_id < index_buffer->get_number_of_elements())
 			{
 				triangle<VB> triangle(
@@ -173,8 +175,9 @@ namespace cg::renderer
 						vertex_buffer->item(index_buffer->item(index_id++)),
 						vertex_buffer->item(index_buffer->item(index_id++)));
 
-				triangles.push_back(triangle);
+				aabb.add_triangle(triangle);
 			}
+			acceleration_structures.push_back(aabb);
 		}
 	}
 
