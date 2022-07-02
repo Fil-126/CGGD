@@ -259,6 +259,10 @@ void cg::renderer::dx12_renderer::load_assets()
 									   vertex_buffer_size,
 									   vertex_buffer_name);
 
+		copy_data(vertex_buffer_data->get_data(),
+				  vertex_buffer_size,
+				  vertex_buffers[i]);
+
 		// Index buffer
 		auto index_buffer_data = model->get_index_buffers()[i];
 		const UINT index_buffer_size = static_cast<UINT>(
@@ -270,13 +274,22 @@ void cg::renderer::dx12_renderer::load_assets()
 		create_resource_on_upload_heap(index_buffers[i],
 									   index_buffer_size,
 									   index_buffer_name);
+
+		copy_data(index_buffer_data->get_data(),
+				  index_buffer_size,
+				  index_buffers[i]);
 	}
 
 	// Constant buffer
-	std::wstring index_buffer_name(L"Constant buffer ");
+	std::wstring const_buffer_name(L"Constant buffer ");
 	create_resource_on_upload_heap(constant_buffer,
 								   64 * 1024,
 								   const_buffer_name);
+
+	copy_data(&cb, sizeof(cb), constant_buffer);
+	CD3DX12_RANGE read_range(0, 0);
+	THROW_IF_FAILED(constant_buffer->Map(0, &read_range,
+										 reinterpret_cast<void**>(&constant_buffer_data_begin)));
 }
 
 
