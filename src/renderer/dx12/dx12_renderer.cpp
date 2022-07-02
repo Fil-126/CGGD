@@ -72,7 +72,7 @@ void cg::renderer::dx12_renderer::initialize_device(ComPtr<IDXGIFactory4>& dxgi_
 #ifdef _DEBUG
 	DXGI_ADAPTER_DESC adapter_desc = {};
 	hardware_adapter->GetDesc(&adapter_desc);
-	OutputDebugString(adapter_desc.Decription);
+	OutputDebugString(adapter_desc.Description);
 	OutputDebugString(L"\n");
 #endif
 
