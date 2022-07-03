@@ -122,7 +122,11 @@ void cg::renderer::dx12_renderer::create_swap_chain(ComPtr<IDXGIFactory4>& dxgi_
 
 void cg::renderer::dx12_renderer::create_render_target_views()
 {
-	// TODO Lab 3.04. Create a descriptor heap for render targets
+	rtv_heap.create_heap(
+			device,
+			D3D12_DESCRIPTOR_HEAP_TYPE_RTV,
+			frame_number
+			);
 	// TODO Lab 3.04. Create render target views
 }
 
@@ -235,7 +239,6 @@ void cg::renderer::dx12_renderer::create_constant_buffer_view(const ComPtr<ID3D1
 
 void cg::renderer::dx12_renderer::load_assets()
 {
-	// TODO Lab 3.03. Copy resource data to suitable resources
 	// TODO Lab 3.04. Create a descriptor heap for a constant buffer
 	// TODO Lab 3.04. Create a constant buffer view
 
